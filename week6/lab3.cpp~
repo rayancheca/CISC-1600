@@ -1,0 +1,29 @@
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+
+unsigned int seed  = (unsigned int)time(0);
+double random(unsigned int &seed);
+
+using namespace std; 
+
+
+int main()
+{
+    for (int i = 0;i<10;++i)
+    {
+        cout << fixed << showpoint << setprecision(5);
+        cout << random(seed) << endl;
+    }
+
+    return 0;
+}
+
+double random(unsigned int &seed)
+{
+    const int MODULUS = 15749;
+    const int MULTIPLIER = 69069;
+    const int INCREMENT = 1;
+    seed = ((MULTIPLIER*seed)+INCREMENT)%MODULUS;
+    return double(seed)/MODULUS;
+}
